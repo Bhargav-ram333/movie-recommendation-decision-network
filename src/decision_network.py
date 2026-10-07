@@ -27,10 +27,14 @@ import warnings
 import numpy as np
 import pandas as pd
 import networkx as nx
-try:
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
     from pgmpy.models import DiscreteBayesianNetwork as BayesianNetwork
-except ImportError:
-    from pgmpy.models import BayesianNetwork   # older pgmpy < 0.1.26
+else:
+    try:
+        from pgmpy.models import DiscreteBayesianNetwork as BayesianNetwork
+    except ImportError:
+        from pgmpy.models import BayesianNetwork   # older pgmpy < 0.1.26
 from pgmpy.estimators import MaximumLikelihoodEstimator, BayesianEstimator
 from pgmpy.inference import VariableElimination
 from pgmpy.factors.discrete import TabularCPD
@@ -148,7 +152,7 @@ class DecisionNetwork:
         ----------
         evidence : dict of {node_name: state_value}  (all strings)
         """
-        if not self._fitted:
+        if not self._fitted or self.inference is None:
             raise RuntimeError("Model not fitted. Call .fit() first.")
 
         # Remove keys not in the network
