@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints*/
+
+# Datasets (downloaded at runtime by data_loader)
+data/ml-100k/
+data/*.zip
+
+# OS & Editor
+.DS_Store
+.vscode/
+.idea/

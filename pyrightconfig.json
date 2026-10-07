@@ -1,0 +1,26 @@
+{
+  "include": [
+    "src",
+    "notebooks",
+    "run_pipeline.py"
+  ],
+  "extraPaths": [
+    "src",
+    "."
+  ],
+  "executionEnvironments": [
+    {
+      "root": ".",
+      "extraPaths": [
+        "src"
+      ]
+    },
+    {
+      "root": "notebooks",
+      "extraPaths": [
+        "src",
+        "../src"
+      ]
+    }
+  ]
+}
